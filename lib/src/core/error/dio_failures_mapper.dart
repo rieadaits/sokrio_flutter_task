@@ -7,31 +7,24 @@ class DioFailureMapper {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.sendTimeout:
       case DioExceptionType.receiveTimeout:
-        return const ServerFailure(
-          "Request timeout. Please try again.",
-          408,
-        );
+        return const ServerFailure("Request timeout. Please try again.");
 
       case DioExceptionType.connectionError:
-        return const ServerFailure(
-          "No Internet Connection",
-          null,
-        );
+        return const ServerFailure("No Internet Connection");
 
       case DioExceptionType.badResponse:
-        final statusCode = e.response?.statusCode;
         final message =
             e.response?.data?['message'] ??
             e.response?.statusMessage ??
             "Server error";
 
-        return ServerFailure(message, statusCode);
+        return ServerFailure(message);
 
       case DioExceptionType.cancel:
-        return const ServerFailure("Request cancelled", null);
+        return const ServerFailure("Request cancelled");
 
       default:
-        return const ServerFailure("Unexpected error occurred", null);
+        return const ServerFailure("Unexpected error occurred");
     }
   }
 }

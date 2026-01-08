@@ -1,29 +1,28 @@
 abstract class Failure {
   final String message;
-  final int? statusCode;
-  const Failure(this.message, this.statusCode);
+  const Failure(this.message);
 }
 
 class ServerFailure extends Failure {
-  const ServerFailure(super.message, super.statusCode);
+  const ServerFailure(super.message);
 }
 
 class NetworkFailure extends Failure {
-  const NetworkFailure(super.message, super.statusCode);
+  const NetworkFailure(super.message);
 }
 
 class TimeoutFailure extends Failure {
-  const TimeoutFailure(super.message, super.statusCode);
+  const TimeoutFailure(super.message);
 }
 
 class UnauthorizedFailure extends Failure {
-  const UnauthorizedFailure(super.message, super.statusCode);
+  const UnauthorizedFailure(super.message);
 }
 
 class UnknownFailure extends Failure {
-  const UnknownFailure(super.message, super.statusCode);
+  const UnknownFailure(super.message);
 }
 
 class CacheFailure extends Failure {
-  const CacheFailure(super.message, super.statusCode);
+  const CacheFailure(super.message);
 }

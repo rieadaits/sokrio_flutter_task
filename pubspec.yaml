@@ -47,8 +47,12 @@ dependencies:
   cached_network_image: ^3.4.1
   # flutter_dotenv for environment variables for API keys and such
   flutter_dotenv: ^6.0.0
-  
+  # Api Client services
   retrofit: ^4.1.0
+  # Code Generation for model classes
+  json_annotation: ^4.8.1
+  freezed_annotation: ^3.1.0
+  # Utilities
   fluttertoast: ^9.0.0
   logger: ^2.0.0
 
@@ -62,6 +66,8 @@ dev_dependencies:
 
   retrofit_generator: ^10.2.0
   build_runner: ^2.10.4
+  freezed: ^3.2.3
+  json_serializable: ^6.7.1
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

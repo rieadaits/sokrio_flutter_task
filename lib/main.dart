@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sokrio_flutter_task/src/domain/use_cases/get_users_use_case.dart';
 import 'src/core/di/injection_container.dart' as di;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() async{
+void main() async {
   await dotenv.load(fileName: ".env");
   await di.init();
   runApp(const MyApp());
@@ -34,11 +35,29 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  late final GetUsersUseCase getUsersUseCase;
+
+  @override
+  void initState() {
+    super.initState();
+    getUsersUseCase = di.sl<GetUsersUseCase>();
+  }
 
   void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+    getUsersUseCase(const GetUsersParams(pageNumber: 1, perPageItems: 10)).then(
+      (result) {
+        result.fold(
+          (failure) {
+            // Handle failure
+            print('Error: ${failure.message.toString()}');
+          },
+          (users) {
+            // Handle success
+            print('Fetched ${users.firstOrNull?.firstName} users');
+          },
+        );
+      },
+    );
   }
 
   @override

@@ -1,4 +1,3 @@
-
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class ApiUrls {
@@ -6,5 +5,5 @@ class ApiUrls {
   static final baseURL = "https://reqres.in";
 
   /// User
-  static const String getUser = '/api/users';
+  static const String getUser = '/users';
 }
