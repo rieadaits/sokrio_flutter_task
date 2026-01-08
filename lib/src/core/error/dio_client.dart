@@ -4,6 +4,7 @@ import 'package:sokrio_flutter_task/src/core/error/connectivity_interceptor.dart
 import 'package:sokrio_flutter_task/src/core/error/network_info.dart';
 import 'package:sokrio_flutter_task/src/core/network/retry_interceptor.dart';
 
+
 class DioClient {
   late final Dio _dio;
   late final NetworkInfo networkInfo;
@@ -18,7 +19,10 @@ class DioClient {
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json",
-          "x-api-key": ApiUrls.apiKey,
+          ///Please replace [ApiUrls.apiKey] with your API key
+          ///My api key has been hidden in .env file for security reasons
+          ///My .env file is included in .gitignore
+          "x-api-key": ApiUrls.apiKey, 
         },
       ),
     );
