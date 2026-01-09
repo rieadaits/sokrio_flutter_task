@@ -22,6 +22,7 @@ class DioClient {
           ///Please replace [ApiUrls.apiKey] with your API key
           ///My api key has been hidden in .env file for security reasons
           ///My .env file is included in .gitignore
+          ///This is how I keep my api key secure
           "x-api-key": ApiUrls.apiKey, 
         },
       ),
