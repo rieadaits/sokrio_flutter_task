@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:sokrio_flutter_task/src/domain/entities/user_entity.dart';
 
@@ -22,7 +23,9 @@ class UserDetailsPage extends StatelessWidget {
             Center(
               child: CircleAvatar(
                 radius: 50,
-                backgroundImage: NetworkImage(userEntity.profilePicture),
+                backgroundImage: CachedNetworkImageProvider(
+                  userEntity.profilePicture,
+                ),
               ),
             ),
             const SizedBox(height: 16),

@@ -42,3 +42,16 @@ extension UserXModel on User{
     );
   }
 }
+
+//For Caching into database
+extension UserEntityToModel on UserEntity{
+  User toModel(){
+    return User(
+      id: id,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      avatar: profilePicture,
+    );
+  }
+}
