@@ -73,7 +73,7 @@ In this project the api key is hidden in (`.env`) file which is added on .(`.git
    flutter run -d ios
    ```
 
-4. **Add API Key on `DioClient.dart` **
+4. **Add API Key on `DioClient.dart`**
    ```bash
    # DioClient.dart file
    add api key in Dio headers in 'x-api-key' 
