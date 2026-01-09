@@ -184,6 +184,14 @@ json_annotation: ^4.8.1
 freezed_annotation: ^3.1.0   # Code Generation for model classes
 ```
 
+### Generator Builder Dependencies
+```yaml
+retrofit_generator: ^10.2.0
+build_runner: ^2.10.4
+freezed: ^3.2.3
+json_serializable: ^6.7.1
+```
+
 ## Performance Optimizations
 
 ### Network
