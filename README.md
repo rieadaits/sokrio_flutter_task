@@ -152,7 +152,7 @@ lib/
 - Easy testing with mock implementations
 - Service locator pattern using GetIt
 
-## Dependencies 📦
+## Dependencies
 
 ### Core Dependencies
 ```yaml
