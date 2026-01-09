@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:sokrio_flutter_task/src/core/error/network_info.dart';
+import 'package:sokrio_flutter_task/src/core/network/network_info.dart';
 
 class ConnectivityInterceptor extends Interceptor {
   late final NetworkInfo networkInfo;

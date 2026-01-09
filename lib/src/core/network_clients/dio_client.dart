@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:sokrio_flutter_task/src/core/constant/api_urls.dart';
-import 'package:sokrio_flutter_task/src/core/error/connectivity_interceptor.dart';
-import 'package:sokrio_flutter_task/src/core/error/network_info.dart';
-import 'package:sokrio_flutter_task/src/core/network/retry_interceptor.dart';
+import 'package:sokrio_flutter_task/src/core/network_clients/connectivity_interceptor.dart';
+import 'package:sokrio_flutter_task/src/core/network/network_info.dart';
+import 'package:sokrio_flutter_task/src/core/network_clients/retry_interceptor.dart';
 
 
 class DioClient {

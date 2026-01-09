@@ -6,7 +6,7 @@ import 'package:sokrio_flutter_task/src/data/models/users_response.dart';
 import 'package:sokrio_flutter_task/src/domain/entities/user_entity.dart';
 import 'package:sokrio_flutter_task/src/domain/repositories/user_repository.dart';
 
-import '../../core/error/network_info.dart';
+import '../../core/network/network_info.dart';
 
 class UserRepositoryImpl implements UserRepository {
   final UsersRemoteDataSources remoteDataSource;
