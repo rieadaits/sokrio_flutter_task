@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                           SearchUsers(_searchController.text.trim()),
                         );
                       } else {
-                        context.read<UserBloc>().add(const ClearSearch());
+                        context.read<UserBloc>().add(FetchUsers());
                       }
                     },
                     child: state.users.isEmpty && state.serarchedUsers.isEmpty
