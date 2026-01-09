@@ -3,7 +3,7 @@
 A comprehensive Flutter application that allows users to explore Sokrio users with advanced features including search, pagination and data caching. Built using Clean Architecture principles and BLoC state management.
 In this project the api key is hidden in (`.env`) file which is added on .(`.gitignore`) because of sicurity concern. App security concern also followed.
 
-## Features ✨
+## Features
 
 ### Architecture
 - **Clean Architecture** with proper separation of concerns
