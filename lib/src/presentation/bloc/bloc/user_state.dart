@@ -13,6 +13,7 @@ class UserLoading extends UserState {}
 
 class UserLoaded extends UserState {
   final List<UserEntity> users;
+  final List<UserEntity> serarchedUsers;
   final bool hasReachedMax;
   final bool isLoadingMore;
   final bool isSearching;
@@ -20,6 +21,7 @@ class UserLoaded extends UserState {
 
   const UserLoaded({
     required this.users,
+     this.serarchedUsers = const [],
     this.hasReachedMax = false,
     this.isLoadingMore = false,
     this.isSearching = false,
@@ -28,6 +30,7 @@ class UserLoaded extends UserState {
 
   UserLoaded copyWith({
     List<UserEntity>? users,
+    List<UserEntity>? serarchedUsers,
     bool? hasReachedMax,
     bool? isLoadingMore,
     bool? isSearching,
@@ -35,6 +38,7 @@ class UserLoaded extends UserState {
   }) {
     return UserLoaded(
       users: users ?? this.users,
+      serarchedUsers: serarchedUsers ?? this.serarchedUsers,
       hasReachedMax: hasReachedMax ?? this.hasReachedMax,
       isLoadingMore: isLoadingMore ?? this.isLoadingMore,
       isSearching: isSearching ?? this.isSearching,
@@ -45,6 +49,7 @@ class UserLoaded extends UserState {
   @override
   List<Object?> get props => [
     users,
+    serarchedUsers,
     hasReachedMax,
     isLoadingMore,
     isSearching,

@@ -120,18 +120,22 @@ class _HomePageState extends State<HomePage> {
                         context.read<UserBloc>().add(const ClearSearch());
                       }
                     },
-                    child: state.users.isEmpty
+                    child: state.users.isEmpty && state.serarchedUsers.isEmpty
                         ? _buildEmptyState(state.isSearching)
                         : ListView.builder(
                             controller: _scrollController,
                             padding: const EdgeInsets.symmetric(horizontal: 16),
-                            itemCount: state.users.length + 1,
+                            itemCount: state.isSearching
+                                ? state.serarchedUsers.length
+                                : state.users.length + 1,
                             itemBuilder: (context, index) {
                               if (index == state.users.length) {
                                 return _buildLoadingFooter(state);
                               }
 
-                              final user = state.users[index];
+                              final user = state.isSearching
+                                  ? state.serarchedUsers[index]
+                                  : state.users[index];
                               return UserListItem(
                                 user: user,
                                 onTap: () {

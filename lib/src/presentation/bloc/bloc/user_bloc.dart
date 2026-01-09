@@ -16,6 +16,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   UserBloc({required this.getUsersUseCase}) : super(UserInitial()) {
     on<FetchUsers>(_loadUsers);
     on<LoadMoreUsers>(_loadMoreUsers);
+    on<SearchUsers>(_searchUsers);
+    on<ClearSearch>(_onClearSearch);
   }
 
   Future<void> _loadUsers(FetchUsers event, Emitter<UserState> emit) async {
@@ -27,15 +29,12 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     result.fold(
       (failure) => emit(UserError(failure.message)),
       (users) => emit(
-        UserLoaded(
-          users: users,
-          hasReachedMax: users.length < _itemsPerPage,
-        ),
+        UserLoaded(users: users, hasReachedMax: users.length < _itemsPerPage),
       ),
     );
   }
 
-    Future<void> _loadMoreUsers(
+  Future<void> _loadMoreUsers(
     LoadMoreUsers event,
     Emitter<UserState> emit,
   ) async {
@@ -48,25 +47,53 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         final result = await getUsersUseCase.call(
           GetUsersParams(pageNumber: _currentPage, perPageItems: _itemsPerPage),
         );
-        result.fold(
-          (failure) => emit(UserError(failure.message)),
-          (newUsers) {
-            if (newUsers.isEmpty) {
-              emit(currentState.copyWith(
-                hasReachedMax: true,
-                isLoadingMore: false,
-              ));
-            } else {
-              emit(UserLoaded(
+        result.fold((failure) => emit(UserError(failure.message)), (newUsers) {
+          if (newUsers.isEmpty) {
+            emit(
+              currentState.copyWith(hasReachedMax: true, isLoadingMore: false),
+            );
+          } else {
+            emit(
+              UserLoaded(
                 users: [...currentState.users, ...newUsers],
                 hasReachedMax: newUsers.length < _itemsPerPage,
                 isLoadingMore: false,
-              ));
-            }
-          },
-        );
+              ),
+            );
+          }
+        });
       }
     }
   }
-}
 
+  Future<void> _searchUsers(SearchUsers event, Emitter<UserState> emit) async {
+    final currentState = state as UserLoaded;
+    final searchQuery = event.query;
+    if (searchQuery.isEmpty) {
+      emit(currentState.copyWith(isSearching: false, searchQuery: ''));
+      return;
+    } else {
+      final localUsers = currentState.users.toList();
+     final searchedUsers = localUsers.where((user) {
+        final fullName = '${user.firstName} ${user.lastName}';
+        return fullName.toLowerCase().contains(searchQuery.toLowerCase());
+      }).toList();
+      emit(
+        currentState.copyWith(
+          serarchedUsers: searchedUsers,
+          isSearching: true,
+          searchQuery: searchQuery,
+        ),
+      );
+    }
+  }
+
+  Future<void> _onClearSearch(
+    ClearSearch event,
+    Emitter<UserState> emit,
+  ) async {
+    if (state is UserLoaded) {
+      emit((state as UserLoaded).copyWith(isSearching: false, searchQuery: ''));
+    }
+  }
+}

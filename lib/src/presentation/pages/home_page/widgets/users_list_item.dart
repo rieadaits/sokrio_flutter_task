@@ -1,8 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:sokrio_flutter_task/src/domain/entities/user_entity.dart';
-
-
 class UserListItem extends StatelessWidget {
   final UserEntity user;
   final VoidCallback onTap;
