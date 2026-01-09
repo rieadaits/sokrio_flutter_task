@@ -26,7 +26,7 @@ In this project the api key is hidden in (`.env`) file which is added on .(`.git
 - **Design** for different screen sizes
 
 ### Search
-- **Debounced Search Input** to minimize API calls (500ms delay)
+- **Offline and Online Search** support
 - **Search State Management** with proper loading and error states
 
 ### Error Handling
