@@ -7,10 +7,15 @@ import 'package:sokrio_flutter_task/src/data/data_sources/remote_data_sources/se
 import 'package:sokrio_flutter_task/src/data/repositories/user_repositories_impl.dart';
 import 'package:sokrio_flutter_task/src/domain/repositories/user_repository.dart';
 import 'package:sokrio_flutter_task/src/domain/use_cases/get_users_use_case.dart';
+import 'package:sokrio_flutter_task/src/presentation/bloc/bloc/user_bloc.dart';
 
 final sl = GetIt.instance;
 
 Future<void> init() async {
+
+  //BLoC
+  sl.registerFactory(() => UserBloc(getUsersUseCase: sl()));
+
   // Use cases
   sl.registerLazySingleton(() => GetUsersUseCase(sl()));
 
